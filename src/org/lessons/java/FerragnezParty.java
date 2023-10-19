@@ -11,12 +11,12 @@ public class FerragnezParty {
         Scanner scan = new Scanner(System.in);
         String inputName = scan.nextLine();
 
-        boolean invited = false;
+        boolean found = false;
 
         //Enhanced For
         for (String partyGuest : partyGuests) {
             if (inputName.equals(partyGuest)) {
-                invited = true;
+                found = true;
                 break;
             }
         }
@@ -24,22 +24,21 @@ public class FerragnezParty {
         //Indexed For
         for (int i = 0; i < partyGuests.length; i++) {
             if (inputName.equals(partyGuests[i])) {
-                invited = true;
+                found = true;
                 break;
             }
         }
 
         //While
         int index = 0;
-        while (index < partyGuests.length) {
+        while (!found && index < partyGuests.length) {
             if (inputName.equals(partyGuests[index])) {
-                invited = true;
-                break;
+                found = true;
             }
             index++;
         }
 
-        System.out.println(invited ? "Benvenuto alla festa" : "Non sei stato invitato");
+        System.out.println(found ? "Benvenuto alla festa" : "Non sei stato invitato");
 
         scan.close();
     }
